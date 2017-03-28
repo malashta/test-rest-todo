@@ -1,0 +1,21 @@
+.container
+    .row
+        .col-md-6
+            .todolist.not-done
+                h1 Список задач
+                input.form-control.add-todo(type='text', placeholder='Добавить задачу' ng-model="todoTitle" ng-keypress="handleSubmitInput($event)")
+                hr
+                ul#todo-items.list-unstyled
+                    li(ng-repeat="item in todos").ui-state-default
+                        input(type="checkbox" ng-model="item.checked" ng-change="handleCheckBox(item)")
+                        | {{item.title}}
+                        button(ng-click="handleDeleteButton(item)").remove-item.btn.btn-default.btn-xs.pull-right
+                            span.glyphicon.glyphicon-remove
+        .col-md-6
+            .todolist
+                h1 Завершенные задачи
+                ul#done-items.list-unstyled
+                    li(ng-repeat="item in completed")
+                        | {{item.title}}
+                        button(ng-click="handleDeleteButton(item)").remove-item.btn.btn-default.btn-xs.pull-right
+                            span.glyphicon.glyphicon-remove
