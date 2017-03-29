@@ -1,7 +1,7 @@
 run.$inject = [
   '$rootScope',
   '$injector',
-  '$state',
+  '$state'
 ];
 
 export default function run($rootScope, $injector, $state) {

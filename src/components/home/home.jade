@@ -1,21 +1,25 @@
 .container
-    .row
-        .col-md-6
-            .todolist.not-done
-                h1 Список задач
-                input.form-control.add-todo(type='text', placeholder='Добавить задачу' ng-model="todoTitle" ng-keypress="handleSubmitInput($event)")
-                hr
-                ul#todo-items.list-unstyled
-                    li(ng-repeat="item in todos").ui-state-default
-                        input(type="checkbox" ng-model="item.checked" ng-change="handleCheckBox(item)")
-                        | {{item.title}}
-                        button(ng-click="handleDeleteButton(item)").remove-item.btn.btn-default.btn-xs.pull-right
-                            span.glyphicon.glyphicon-remove
-        .col-md-6
-            .todolist
-                h1 Завершенные задачи
-                ul#done-items.list-unstyled
-                    li(ng-repeat="item in completed")
-                        | {{item.title}}
-                        button(ng-click="handleDeleteButton(item)").remove-item.btn.btn-default.btn-xs.pull-right
+    .col-xs-12.col-sm-12.col-md-offset-3.col-md-5.col-lg-offset-3.col-lg-5
+        .h2 Список задач
+        .form
+            .input-group(ng-style="{width:'100%'}")
+                input(type="text" ng-model="todoTitle" placeholder="Введите задачу" ng-keypress="handleSubmitInput($event)").form-control
+        hr
+        ul(ng-show="todos.length").list-group
+            li(ng-repeat="todo in todos" ng-class="{disabled: todo.completed}").list-group-item.clearfix.task
+                p(ng-if="!todo.isEdit").lead {{todo.title}}
+                input(ng-if="todo.isEdit" ng-model="todo.title" id="isEdit{{$index}}" ng-keypress="handleEditTodo($index, $event)").is-edit-todo
+                div
+                    span
+                        a(href="#" ng-click="handleSortUp($index)" ng-show="$index && !todo.isEdit").glyphicon.glyphicon-arrow-up
+                    span
+                        a(href="#" ng-click="handleSortDown($index)" ng-show="$index<todos.length-1 && !todo.isEdit").glyphicon.glyphicon-arrow-down
+                    span.pull-right
+                        button(ng-click="handleEditTodo($index)" ng-disabled="todo.completed || todo.isEdit").btn.btn-default.btn-xs
+                            span.glyphicon.glyphicon-pencil
+                        button(ng-click="handleDoneTodo($index)" ng-disabled="todo.isEdit" ng-show="!todo.completed").btn.btn-primary.btn-xs
+                            span.glyphicon.glyphicon-ok
+                        button(ng-click="handleUnDoneTodo($index)" ng-show="todo.completed").btn.btn-primary.btn-xs
+                            span.glyphicon.glyphicon-repeat
+                        button(ng-click="handleDeleteTodo($index)" ng-disabled="todo.isEdit").btn.btn-danger.btn-xs
                             span.glyphicon.glyphicon-remove

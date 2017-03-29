@@ -8,7 +8,7 @@ export default angular.module('app.constants', [])
     base: BASE_URL,
     resource: BASE_RESOURCE_URL,
     todos : {
-      all : '/6'
+      all : '6'
     }
   })
   .constant('events', {

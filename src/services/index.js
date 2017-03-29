@@ -4,7 +4,9 @@
 import angular from 'angular';
 
 import requests from './requests';
+import common from './common';
 
 export default angular.module('app.services', [
-  requests
+  requests,
+  common
 ]).name;

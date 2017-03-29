@@ -66,14 +66,12 @@ module.exports = {
             title: 'Angular-metro',
             files: {
                 css: [
-                    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-                    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
+                    '//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+                    '//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
                     '/bundle.css'
                 ],
                 js: [
-                    'https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js',
-                    'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js',
-                    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+                    'https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js'
                 ]
             }
         }),

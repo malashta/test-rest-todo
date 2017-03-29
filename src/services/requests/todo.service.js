@@ -14,31 +14,19 @@ class TodoService {
   }
   
   getAllTodos() {
-    this.$http.get(`${this.urls.base}/${this.urls.todos.all}`)
-      .then((response) => {
-        this.$rootScope.$broadcast(this.events.todosIsFetched,response.data)
-      });
+    return this.$http.get(`${this.urls.base}/${this.urls.todos.all}`);
   }
 
   createNewRecord({title, order}) {
-    this.$http.post(`${this.urls.base}/${this.urls.todos.all}`,{title: title, order: order})
-      .then((response) => {
-        this.$rootScope.$broadcast(this.events.createSuccess,response.data)
-      });
+    return this.$http.post(`${this.urls.base}/${this.urls.todos.all}`,{title, order});
   }
 
   changeItem({url,order,title, completed}) {
-    this.$http.patch(`${url}`,{order,title, completed})
-      .then((response) => {
-        this.$rootScope.$broadcast(this.events.changeSuccess,response.data)
-      })
+    return this.$http.patch(`${url}`,{order,title,completed});
   }
 
-  deleteRecord({url, id}) {
-    this.$http.delete(`${url}`)
-      .then((response) => {
-        this.$rootScope.$broadcast(this.events.deleteSuccess,id)
-      })
+  deleteRecord({url}) {
+    return this.$http.delete(`${url}`);
   }
 
 
