@@ -95,8 +95,9 @@ export default class HomeController {
    * @param {Number} index
      */
   handleDoneTodo(index){
-    this.scope.todos[index].completed = true;
-    this.todo.updateSelectedTodo(this.scope.todos[index]);
+    let item = this.scope.todos[index];
+    item.completed = true;
+    this.todo.updateSelectedTodo(item);
   }
 
   /**
@@ -104,8 +105,9 @@ export default class HomeController {
    * @param {Number} index
    */
   handleUnDoneTodo(index){
-    this.scope.todos[index].completed = false;
-    this.todo.updateSelectedTodo(this.scope.todos[index]);
+    let item = this.scope.todos[index];
+    item.completed = false;
+    this.todo.updateSelectedTodo(item);
   }
 
   /**
